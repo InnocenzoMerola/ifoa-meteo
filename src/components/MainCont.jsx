@@ -2,8 +2,9 @@ import Container from "react-bootstrap/Container";
 import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
 import ListGroup from "react-bootstrap/ListGroup";
+import Card from "react-bootstrap/Card";
 
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 
 const CityList = () => {
   const [selectedCity, setSelectedCity] = useState(null);
@@ -53,7 +54,7 @@ const CityList = () => {
   return (
     <Container className="mt-5">
       <Row className="justify-content-between">
-        <Col md={3}>
+        <Col md={4} lg={3} className=" mb-2 mb-md-0">
           <h3>Le tue ricerche</h3>
           <ListGroup>
             {cities.map((city, i) => (
@@ -71,7 +72,7 @@ const CityList = () => {
           </ListGroup>
         </Col>
         {!infoCity && (
-          <Col md={9}>
+          <Col md={8} lg={9}>
             <img
               src="https://w-content.meteosuper.it/2022/08/140822-pt_LUN-15-PREVISIONI-1.jpg"
               alt="mappa"
@@ -80,22 +81,39 @@ const CityList = () => {
           </Col>
         )}
         {infoCity && selectedCity && cityData && (
-          <Col md={5}>
-            <ListGroup>
-              <h4 className="text-center">{selectedCity}</h4>
-              <ListGroup.Item>
-                Cielo: {cityData.weather[0].main} - {cityData.weather[0].description}{" "}
-              </ListGroup.Item>
-              <ListGroup.Item>Temperatura: {(cityData.main.temp - 273.15).toFixed(2)}°C</ListGroup.Item>
-              <h5 className="text-center mt-2">Maggiori dettagli</h5>
-              <ListGroup.Item>Temperatura minima: {(cityData.main.temp_min - 273.15).toFixed(2)}°C</ListGroup.Item>
-              <ListGroup.Item>Temperatura massima: {(cityData.main.temp_max - 273.15).toFixed(2)}°C</ListGroup.Item>
-              <ListGroup.Item>Umidità: {cityData.main.humidity}%</ListGroup.Item>
-              <ListGroup.Item>Vento: {cityData.wind.speed}km/h</ListGroup.Item>
-              <ListGroup.Item>Latitudine: {cityData.coord.lat}</ListGroup.Item>
-              <ListGroup.Item>Longitudine: {cityData.coord.lon}</ListGroup.Item>
-            </ListGroup>
-          </Col>
+          <>
+            <Col md={8} lg={9}>
+              <Row className="justify-content-between align-items-center">
+                <Col md={12} lg={6}>
+                  <img
+                    src="https://www.ilmeteo.it/portale/files/giornale/medium/temperature-5123.jpg"
+                    alt="ima"
+                    className="logo"
+                  />
+                </Col>
+                <Col md={12} lg={6}>
+                  <ListGroup>
+                    <h4 className="text-center">{selectedCity}</h4>
+                    <ListGroup.Item>
+                      Cielo: {cityData.weather[0].main} - {cityData.weather[0].description}{" "}
+                    </ListGroup.Item>
+                    <ListGroup.Item>Temperatura: {(cityData.main.temp - 273.15).toFixed(2)}°C</ListGroup.Item>
+                    <h5 className="text-center mt-2">Maggiori dettagli</h5>
+                    <ListGroup.Item>
+                      Temperatura minima: {(cityData.main.temp_min - 273.15).toFixed(2)}°C
+                    </ListGroup.Item>
+                    <ListGroup.Item>
+                      Temperatura massima: {(cityData.main.temp_max - 273.15).toFixed(2)}°C
+                    </ListGroup.Item>
+                    <ListGroup.Item>Umidità: {cityData.main.humidity}%</ListGroup.Item>
+                    <ListGroup.Item>Vento: {cityData.wind.speed}km/h</ListGroup.Item>
+                    <ListGroup.Item>Latitudine: {cityData.coord.lat}</ListGroup.Item>
+                    <ListGroup.Item>Longitudine: {cityData.coord.lon}</ListGroup.Item>
+                  </ListGroup>
+                </Col>
+              </Row>
+            </Col>
+          </>
         )}
       </Row>
     </Container>

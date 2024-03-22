@@ -8,7 +8,7 @@ import MyFooter from "./components/MyFooter";
 
 function App() {
   return (
-    <Container>
+    <Container className="top-cont my-5 shadow p-3 mb-5 bg-body rounded">
       <MyNavbar />
       <Searched />
       <MainCont />

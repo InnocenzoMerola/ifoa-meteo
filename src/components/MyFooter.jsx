@@ -5,7 +5,7 @@ import Container from "react-bootstrap/esm/Container";
 
 const MyFooter = function () {
   return (
-    <Container fluid className="px-4">
+    <Container fluid className="px-4 my-footer">
       <Row className="justify-content-center mt-5 g-0">
         <Col sm={12} md={10} lg={6}>
           <Row>
